@@ -1,0 +1,22 @@
+<h2>Cadastro Contato</h2>
+
+<form #contatoForm="ngForm">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Telefone:</label>
+
+        <div class="col-sm-5">
+            <input [(ngModel)]="contato.telefone" name="telefone" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Celular:</label>
+
+        <div class="col-sm-5">
+            <input [(ngModel)]="contato.celular" name="celular" class="form-control">
+        </div>
+    </div>
+
+    <button (click)="Save(contato)" class="btn btn-primary mr-2">Salvar</button>
+    <button [routerLink]="['/contato/', contato.idPessoa]" class="btn btn-secondary mr-2">Voltar</button>
+</form>

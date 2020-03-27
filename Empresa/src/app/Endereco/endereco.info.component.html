@@ -1,0 +1,84 @@
+<h2> Editar Endereço</h2>
+
+<form #enderecoForm="ngForm" *ngIf="endereco">
+   
+    <div class="form-group row">
+            <label class="col-sm-2 col-form-label">CEP:</label>
+            <div class="col-sm-3">
+                <input [(ngModel)]="endereco.cep" required name="cep" #enderecoCep="ngModel"
+                    [ngClass]="{'is-invalid':enderecoCep.invalid}" class="form-control">
+                <div class="invalid-feedback">
+                    <span>Cep é Obrigatorio</span>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="BuscarCep(endereco.cep)"> Buscar CEP</button>
+        </div>
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">UF:</label>
+            <div class="col-sm-2">
+                <input [(ngModel)]="endereco.uf" required name="uf" (ngModelChange)="BuscarEstado($event)"
+                    #enderecoUf="ngModel" [ngClass]="{'is-invalid':enderecoUf.invalid}" class="form-control">
+                <div class="invalid-feedback">
+                    <span>UF é Obrigatorio</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nome Estado:</label>
+            <div class="col-sm-5">
+                <input [(ngModel)]="endereco.nomeEstado" required name="nomeEstado" #enderecoNomeEstado="ngModel"
+                    [ngClass]="{'is-invalid':enderecoNomeEstado.invalid}" class="form-control">
+                <div class="invalid-feedback">
+                    <span>Nome Estado é Obrigatorio</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nome Cidade:</label>
+            <div class="col-sm-5">
+                <input [(ngModel)]="endereco.localidade" required name="localidade" #enderecoLocalidade="ngModel"
+                    [ngClass]="{'is-invalid':enderecoLocalidade.invalid}" class="form-control">
+                <div class="invalid-feedback">
+                    <span>Nome da Cidade é Obrigatorio</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nome Bairro:</label>
+            <div class="col-sm-5">
+                <input [(ngModel)]="endereco.bairro" required name="bairro" #enderecoBairro="ngModel"
+                    [ngClass]="{'is-invalid':enderecoBairro.invalid}" class="form-control">
+                <div class="invalid-feedback">
+                    <span>Nome do Bairro é Obrigatorio</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Logradouro:</label>
+            <div class="col-sm-5">
+                <input [(ngModel)]="endereco.logradouro" required name="logradouro" #enderecoLogradouro="ngModel"
+                    [ngClass]="{'is-invalid':enderecoLogradouro.invalid}" class="form-control">
+                <div class="invalid-feedback">
+                    <span>Nome do Logradouro é Obrigatorio</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Complemento: </label>
+            <div class="col-sm-5">
+                <input [(ngModel)]="endereco.complemento" name="complemento" #enderecoComplemento="ngModel"
+                    class="form-control">
+            </div>
+        </div>
+    
+        <button [disabled]="enderecoForm.invalid" (click)="Save(endereco)" class="btn btn-primary mr-2">Salvar</button>
+        <button [routerLink]="['/endereco']" class="btn btn-secondary mr-2">Voltar</button>
+
+</form>   
+    

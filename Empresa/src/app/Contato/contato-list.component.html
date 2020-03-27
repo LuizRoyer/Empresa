@@ -1,0 +1,28 @@
+<h2>Lista Contatos</h2>
+
+<div class="form-group row">
+    <button [routerLink]="['/contato/info', idpessoa]" class="btn btn-primary mr-2">Cadastrar
+        Contato</button>
+</div>
+
+<div class="col-sm-12">
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>Telefone</th>
+                <th>Celular</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contato of listaContato">
+                <td>{{contato.telefone}}</td>
+                <td>{{contato.celular}}</td>
+                <td>
+
+                    <button (click)="DeleteById(contato.idContato)" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

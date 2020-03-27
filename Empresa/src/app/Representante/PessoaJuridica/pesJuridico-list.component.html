@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>Lista Pessoas Jurídicas</h2>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-1 col-form-label">CNPJ:</label>
+    <div class="col-sm-7">
+        <input [(ngModel)]=cnpjFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+    <button [routerLink]="['/juridica/create']" style="margin-left: 50px;" class="btn btn-primary mr-2">Cadastrar Pessoa Juridica</button>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-1 col-form-label">Nome:</label>
+    <div class="col-sm-7">
+        <input [(ngModel)]=nomeFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+</div>
+
+<div class="col-sm-12">
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>CNPJ</th>
+                <th>Cadastrar</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let juridico of filterPesJuridico">
+                <td>{{juridico.nome}}</td>
+                <td>{{juridico.sobrenome}}</td>
+                <td>{{juridico.cnpj}}</td>
+                <td>
+                    <a [routerLink]="['/contato/', juridico.idPessoa]" class="btn btn-primary mr-2">Contato</a>
+                </td>
+                <td>
+                    <button (click)="DeleteById(juridico.idPesJuridica)" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

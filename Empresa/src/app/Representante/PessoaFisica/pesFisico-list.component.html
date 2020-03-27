@@ -1,0 +1,51 @@
+<div class="container">
+<h2>Lista Pessoas Fisicas</h2>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-1 col-form-label">CPF:</label>
+    <div class="col-sm-7">
+        <input [(ngModel)]=cpfFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+    <button [routerLink]="['/fisica/create']" style="margin-left: 50px;" class="btn btn-primary mr-2">Cadastrar Pessoa Fisica</button>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-1 col-form-label">Nome:</label>
+    <div class="col-sm-7">
+        <input [(ngModel)]=nomeFiltro class="form-control">
+    </div>  
+    <button><img [src]= "imagem" width="30" height="25"></button>  
+</div>
+
+<div class="col-sm-12">
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>CPF</th>
+                <th>RG</th>
+                <th>Data Nascimento</th>
+                <th>Cadastrar</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fisica of filterPesFisica">
+                <td>{{fisica.nome}}</td>
+                <td>{{fisica.sobrenome}}</td>
+                <td>{{fisica.cpf}}</td>
+                <td>{{fisica.rg }}</td>
+                <td>{{fisica.dataNascimento | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <a [routerLink]="['/contato/', fisica.idPessoa]" class="btn btn-primary mr-2">Contato</a>
+                </td>
+                <td>
+                    <button (click)="DeleteById(fisica.idPesFisica)" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

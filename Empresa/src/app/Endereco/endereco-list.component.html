@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Lista Endereços</h2>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-1 col-form-label">CEP:</label>
+    <div class="col-sm-5">
+        <input [(ngModel)]=cepFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+    <button [routerLink]="['/endereco/create']" style="margin-left: 50px;" class="btn btn-primary mr-2">Cadastrar Endereço</button>
+</div>
+
+<div class="col-sm-12">
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>CEP</th>
+                <th>UF</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Bairro</th>
+                <th>Logradouro</th>
+                <th>Complemento</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let endereco of filterEndereco">
+                <td>{{endereco.cep}}</td>
+                <td>{{endereco.uf}}</td>
+                <td>{{endereco.nomeEstado}}</td>
+                <td>{{endereco.localidade }}</td>
+                <td>{{endereco.bairro}}</td>
+                <td>{{endereco.logradouro }}</td>
+                <td>{{endereco.complemento }}</td>
+                <td>
+                    <a [routerLink]="['/endereco/info', endereco.idEndereco]" class="btn btn-primary mr-2">Editar</a>
+                    <button (click)="DeleteById(endereco.idEndereco)" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

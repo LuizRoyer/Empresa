@@ -1,0 +1,45 @@
+<h2> Nova Empresa</h2>
+
+<form #empresaForm="ngForm">
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Nome Fantasia:</label>
+        <div class="col-sm-4">
+            <input [(ngModel)]="empresa.nomeFantasia" required name="nomeFantasia" #empresaNomeFantasia="ngModel"
+                [ngClass]="{'is-invalid':empresaNomeFantasia.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span>Nome Fantasia é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">CNPJ:</label>
+        <div class="col-sm-4">
+            <input [(ngModel)]="empresa.cnpj" required name="cnpj" #empresaCnpj="ngModel"
+                [ngClass]="{'is-invalid':empresaCnpj.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span>CNPJ é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label ">Endereço</label>
+        <div class="col-sm-6" >
+            <select class="form-group row "style="height: 35px; margin-left:1px ;"[(ngModel)]="empresa.filtro" required name="endereco">
+                <option *ngFor="let endereco of listaEnderecos" value={{endereco.idEndereco}}>
+                    {{endereco.uf}} {{endereco.localidade}} {{endereco.bairro}} {{endereco.logradouro}}
+                   
+                </option>
+            </select>
+        </div>
+        <div>
+            <button [routerLink]="['/endereco/create']"  style="height:35px; margin-left:-30px;" class="btn btn-secondary">Cadastrar Endereço</button>
+        </div>
+       
+    </div>
+
+    <button [disabled]="empresaForm.invalid" (click)="Save(empresa)" class="btn btn-primary mr-2">Salvar</button>
+    <button [routerLink]="['/empresa']" class="btn btn-secondary mr-2">Voltar</button>
+</form>

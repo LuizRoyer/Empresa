@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"> </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a [routerLink]="['/fornecedor']" routerLinkActive="active" class="nav-link">Fornecedores</a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['/endereco']" routerLinkActive="active" class="nav-link">Endereços</a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['/empresa']" routerLinkActive="active" class="nav-link">Empresas</a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['/fisica']" routerLinkActive="active" class="nav-link">Representante Físico</a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['/juridica']" routerLinkActive="active" class="nav-link">Representante Jurídico</a>
+            </li>
+        </ul>
+    </div>
+</nav>

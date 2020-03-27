@@ -1,0 +1,39 @@
+<h2> Cadastrar Representante Jurídico</h2>
+
+<form #juridicaForm="ngForm" *ngIf="juridica">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Nome :</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="juridica.nome" required name="nome" #juridicaNome="ngModel"
+                [ngClass]="{'is-invalid':juridicaNome.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span> Campo Nome é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Sobrenome:</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="juridica.sobrenome" required name="sobrenome" #juridicaSobreNome="ngModel"
+                [ngClass]="{'is-invalid':juridicaSobreNome.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span>Campo SobreNome é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">CNPJ:</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="juridica.cnpj" required name="cnpj" #juridicaCnpj="ngModel"
+                [ngClass]="{'is-invalid':juridicaCnpj.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span>Campo Cpf é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <button [disabled]="juridicaForm.invalid" (click)="Save(juridica)" class="btn btn-primary mr-2">Salvar</button>
+    <button [routerLink]="['/juridica']" class="btn btn-secondary mr-2">Voltar</button>
+</form>

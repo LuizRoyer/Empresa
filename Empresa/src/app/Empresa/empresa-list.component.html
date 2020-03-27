@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Lista Empresas</h2>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">CEP:</label>
+    <div class="col-sm-5">
+        <input [(ngModel)]=cepFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+    <button [routerLink]="['/empresa/create']" style="margin-left: 50px;" class="btn btn-primary mr-2">Cadastrar Empresa</button>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nome Fantasia:</label>
+    <div class="col-sm-5">
+        <input [(ngModel)]=nomeFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+</div>
+
+<div class="col-sm-12">
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>Nome Fantasia</th>
+                <th>CNPJ</th>
+                <th>CEP</th>
+                <th>UF</th>
+                <th>Cidade</th>
+                <th>Bairro</th>
+                <th>Logradouro</th>
+                <th>Complemento</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let empresa of filterEmpresa">
+                <td>{{empresa.nomeFantasia}}</td>
+                <td>{{empresa.cnpj}}</td>
+                <td>{{empresa.endereco.cep}}</td>
+                <td>{{empresa.endereco.uf}}</td>
+                <td>{{empresa.endereco.localidade }}</td>
+                <td>{{empresa.endereco.bairro}}</td>
+                <td>{{empresa.endereco.logradouro }}</td>
+                <td>{{empresa.endereco.complemento }}</td>
+                <td>
+                    <button (click)="DeleteById(empresa.idEmpresa)" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

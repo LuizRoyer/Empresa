@@ -1,0 +1,62 @@
+<h2> Cadastrar Representante Físico</h2>
+
+<form #fisicaForm="ngForm" *ngIf="fisica">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Nome:</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="fisica.nome" required name="nome" #fisicaNome="ngModel"
+                [ngClass]="{'is-invalid':fisicaNome.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span> Campo Nome é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Sobrenome:</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="fisica.sobrenome" required name="sobrenome" #fisicaSobreNome="ngModel"
+                [ngClass]="{'is-invalid':fisicaSobreNome.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span>Campo SobreNome é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">CPF:</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="fisica.cpf" required name="cpf" #fisicaCpf="ngModel"
+                [ngClass]="{'is-invalid':fisicaCpf.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span>Campo Cpf é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">RG:</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="fisica.rg" required name="rg" #fisicaRg="ngModel"
+                [ngClass]="{'is-invalid':fisicaRg.invalid}" class="form-control">
+            <div class="invalid-feedback">
+                <span>Campo RG é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Data Nascimento:</label>
+        <div class="col-sm-5">
+            <input type='date' [(ngModel)]="fisica.dataNascimento" required name="dataNascimento"
+                #fisicaDataNascimento="ngModel" [ngClass]="{'is-invalid':fisicaDataNascimento.invalid}"
+                class="form-control">
+            <div class="invalid-feedback">
+                <span>Campo Data de Nascimento é Obrigatorio</span>
+            </div>
+        </div>
+    </div>
+
+    <button [disabled]="fisicaForm.invalid" (click)="Save(fisica)" class="btn btn-primary mr-2">Salvar</button>
+    <button [routerLink]="['/fisica']" class="btn btn-secondary mr-2">Voltar</button>
+</form>

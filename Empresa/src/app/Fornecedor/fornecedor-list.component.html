@@ -1,0 +1,89 @@
+<div class="container">
+<h2>Lista Fornecedores</h2>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nome:</label>
+    <div class="col-sm-5">
+        <input [(ngModel)]=nomeFiltro class="form-control">       
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"  ></button>
+    <button [routerLink]="['/fornecedor/create']"  style="margin-left: 50px;" class="btn btn-primary mr-2">Cadastrar Fornecedor</button>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">CNPJ:</label>
+    <div class="col-sm-5">
+        <input [(ngModel)]=cnpjFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">CPF:</label>
+    <div class="col-sm-5">
+        <input [(ngModel)]=cpfFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Data Cadastro:</label>
+    <div class="col-sm-3">
+        <input type="date" [(ngModel)]=DataFiltro class="form-control">
+    </div>
+    <button><img [src]= "imagem" width="30" height="25"></button>
+</div>
+
+<div class="col-sm-9">
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>Nome Fantasia</th>
+                <th>CNPJ</th>                
+                <th>Nome Fornecedor</th>
+                <th>Sobrenome</th>
+                <th>Tipo</th>
+                <th>CPF</th>
+                <th>Data Nascimento</th>
+                <th>RG</th>
+                <th>CNPJ Representante </th>
+                <th>DataCadastro</th>
+                <th>CEP</th>
+                <th>UF</th>
+                <th>Cidade</th>
+                <th>Bairro</th>
+                <th>Logradouro</th>
+                <th>Complemento</th>
+                <th>Contato</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fornecedor of filterFornecedores">
+                <td>{{fornecedor.nomeFantasia}}</td>
+                <td>{{fornecedor.cnpjEmpresa}}</td>               
+                <td>{{fornecedor.nomeFornecedor}}</td>
+                <td>{{fornecedor.sobrenome}}</td>
+                <td>{{fornecedor.tipo}}</td>
+                <td>{{fornecedor.cpf}}</td>
+                <td>{{fornecedor.dataNascimento | date:'dd/MM/yyyy'}}</td>
+                <td>{{fornecedor.rg}}</td>
+                <td>{{fornecedor.cnpj}}</td>
+                <td>{{fornecedor.dataCadastro | date:'dd/MM/yyyy'}}</td>
+                <td>{{fornecedor.cep}}</td>
+                <td>{{fornecedor.uf}}</td>
+                <td>{{fornecedor.nomeCidade }}</td>
+                <td>{{fornecedor.nomeBairro}}</td>
+                <td>{{fornecedor.logradouro }}</td>
+                <td>{{fornecedor.complemento }}</td>
+                <td>
+                    <a [routerLink]="['/contato/', fornecedor.idPessoa]" class="btn btn-primary mr-2">Contato</a>
+                </td>
+                <td>
+                    <button (click)="DeleteById(fornecedor.idFornecedor)" class="btn btn-danger">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
